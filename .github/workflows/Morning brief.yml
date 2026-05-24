@@ -1,32 +1,31 @@
 name: Morning Brief WA Notification
- 
+
 on:
   schedule:
     # Ogni giorno alle 8:15 ora italiana (6:15 UTC in inverno, 7:15 UTC in estate)
     # Usiamo 6:15 UTC — aggiusta a 7:15 in estate se necessario
     - cron: '15 6 * * *'
   workflow_dispatch:  # permette lancio manuale dal pannello GitHub
- 
+
 jobs:
   send-brief:
     runs-on: ubuntu-latest
- 
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
- 
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
- 
+
       - name: Install dependencies
         run: pip install requests
- 
+
       - name: Send Morning Brief to WhatsApp group
         env:
           GREEN_API_INSTANCE: ${{ secrets.GREEN_API_INSTANCE }}
           GREEN_API_TOKEN: ${{ secrets.GREEN_API_TOKEN }}
           WA_GROUP_ID: ${{ secrets.WA_GROUP_ID }}
         run: python send_brief.py
- 
