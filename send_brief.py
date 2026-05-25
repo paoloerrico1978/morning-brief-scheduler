@@ -11,7 +11,6 @@ GROUP_ID = os.environ.get("WA_GROUP_ID", "120363428668098354@g.us")
 BRIEF_URL = "https://ai-morning.lovable.app/"
 
 MESSAGGIO = f"""🤖 *Morning AI Brief — è online!*
-
 L'intelligenza artificiale spiegata prima del caffè. ☕
 
 👉 {BRIEF_URL}
